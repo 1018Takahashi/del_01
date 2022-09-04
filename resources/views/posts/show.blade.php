@@ -50,25 +50,27 @@
             </div>
         </div>
         
-        <div class="edit">
-        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
-        </div>
+        @if ($user_id == $post->user_id)
+            <div class="edit">
+            <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+            </div>
         
-        <div class="delete">
-            <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
-                @csrf
-                @method('DELETE')
-                <button type = "button" onclick = "return deletePost(this)">delete</button> 
-            </form>
-        </div>
-        <script>
-            function deletePost(e){
-                'use strict';
-                if(confirm("削除すると復元できません。\n本当に削除しますか？")){
-                    document.getElementById("form_delete").submit();
+            <div class="delete">
+                <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type = "button" onclick = "return deletePost(this)">delete</button> 
+                </form>
+            </div>
+            <script>
+                function deletePost(e){
+                    'use strict';
+                    if(confirm("削除すると復元できません。\n本当に削除しますか？")){
+                        document.getElementById("form_delete").submit();
+                    }
                 }
-            }
-        </script>
+            </script>
+        @endif
             
         <div class="footer">
             <a href="/">戻る</a>

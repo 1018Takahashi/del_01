@@ -19,6 +19,7 @@ class PostController extends Controller
     //投稿詳細画面のpostデータ取得
     public function show(Post $post)
     {
+        $user_id = Auth::id();
         return view('posts/show')->with(['post' => $show]);
     }
     
