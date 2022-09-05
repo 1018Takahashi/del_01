@@ -16,7 +16,7 @@
         
         <!--投稿一覧-->
         <div class='posts'>
-            @foreach ($posts as $value)
+            @foreach ($posts as $post)
                 <div class='post'>
                     <h2 class='title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>

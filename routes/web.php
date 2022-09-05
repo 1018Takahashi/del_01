@@ -12,12 +12,12 @@
 */
 
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => 'auth'], function(){
     
     Route::get('/', 'PostController@index');
     
-    Route::get('/posts/{show}', 'PostController@show')->where('show', '[0-9]+');
-    
+    Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
+
     Route::get('/posts/create', 'PostController@create');
     
     Route::post('/posts', 'PostController@store');

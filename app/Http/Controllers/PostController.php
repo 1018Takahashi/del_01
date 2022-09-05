@@ -7,6 +7,8 @@ use App\Category;
 use App\Place;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -20,7 +22,22 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $user_id = Auth::id();
-        return view('posts/show')->with(['post' => $show]);
+        return view('posts/show')->with([
+            'post' => $post,
+            'user_id' => $user_id,
+            ]);
+    }
+    
+    public function store(Post $post, PostRequest $request)
+    {
+        $img = $request->file('image');
+        $path = Storage::disk('s3')->putFile('deliverable-creation', $img, 'public');
+        $post->img = Storage::disk('s3')->url($path);
+        
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
+        
     }
     
     //投稿作成画面のcategories,placesデータ取得
@@ -32,17 +49,12 @@ class PostController extends Controller
             ]);
     }
     
-    //投稿作成画面で入力したデータをデータベースに保存
-    public function store(PostRequest $request, Post $post)
-    {
-        $input = $request['post'];
-        $post->fill($input)->save();
-        return redirect('/posts/' . $post->id);
-    }
     
     //投稿編集画面表示
     public function edit(Post $post)
     {
+        $test = 1;
+        dd($test);
         return view('posts/edit')->with(['post' => $post]);
     }
     

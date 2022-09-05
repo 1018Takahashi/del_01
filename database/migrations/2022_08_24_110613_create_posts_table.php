@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('f', 50);
             $table->string('ss', 50);
             $table->string('iso', 50);
-            $table->string('access', 50);
+            $table->string('access', 50)->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->integer('place_id')->unsigned();
