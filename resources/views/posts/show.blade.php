@@ -20,7 +20,9 @@
         <h1 class="title">
             <p>{{ $post->title }}</p>
         </h1>
-        <img src="{{ $post->img }}">
+        <div class="text-center">
+            <img src="{{ $post->img }}" class="w-75">
+        </div>
         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
         <div class="body">
             <div class="Address">

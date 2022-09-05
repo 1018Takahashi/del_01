@@ -15,15 +15,22 @@
         <p class = "create">[<a href='/posts/create'>create</a>]</p>
         
         <!--投稿一覧-->
-        <div class='posts'>
+        <div class='card-columns'>
             @foreach ($posts as $post)
-                <div class='post'>
-                    <h2 class='title'>
+            <div class="card">
+                <div class="" alt="">
+                    <img src="{{ $post->img }}" class="card-img-top">
+                </div>
+                <div class='card-img-overlay'>
+                    <h2 class='card-title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
-                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                <a href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>
+                    <div class="card-text">
+                        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                        <a href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>
+                    </div>
                 </div>
+            </div>
             @endforeach
         </div>
         

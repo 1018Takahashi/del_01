@@ -26,7 +26,8 @@ class Post extends Model
         'address',
         'category_id',
         'place_id',
-        'user_id'
+        'user_id',
+        'access'
         ];
         
     public function category()
