@@ -53,8 +53,6 @@ class PostController extends Controller
     //投稿編集画面表示
     public function edit(Post $post)
     {
-        $test = 1;
-        dd($test);
         return view('posts/edit')->with(['post' => $post]);
     }
     

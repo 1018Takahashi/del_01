@@ -22,10 +22,10 @@
                     <input type='text' name='post[title]' value="{{ $post->title }}">
                     <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                 </div>
-                <div class='content__adress'>
-                    <h2>Adress</h2>
-                    <input type='text' name='post[adress]' value="{{ $post->adress }}">
-                    <p class="body__error" style="color:red">{{ $errors->first('post.adress') }}</p>
+                <div class='content__address'>
+                    <h2>Address</h2>
+                    <input type='text' name='post[address]' value="{{ $post->address }}">
+                    <p class="body__error" style="color:red">{{ $errors->first('post.address') }}</p>
                 </div>
                 <div class='content__camera'>
                     <h2>Camera</h2>
