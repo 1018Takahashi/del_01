@@ -17,9 +17,16 @@ class Post extends Model
     
     protected $fillable = [
         'title',
-        'body',
+        'img',
+        "camera",
+        "lens",
+        "f",
+        "ss",
+        "iso",
+        'address',
         'category_id',
-        'place_id'
+        'place_id',
+        'user_id'
         ];
         
     public function category()
@@ -30,5 +37,10 @@ class Post extends Model
     public function place()
     {
         return $this->belongsTo('App\Place');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

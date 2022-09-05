@@ -14,15 +14,19 @@
     
     
     <body>
+        <h1 class="user_name">
+            <p>{{ $post->user->name }}</p>
+        </h1>
         <h1 class="title">
             <p>{{ $post->title }}</p>
         </h1>
+        <img src="{{ $post->img }}">
         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
         <div class="body">
-            <div class="Adress">
-                <h3>adress</h3>
-                <a href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>
-                <p>{{ $post->adress }}</p>    
+            <div class="Address">
+                <h3>address</h3>
+                <a href="/places/{{ $post->place->name }}">{{ $post->place->name }}</a>
+                <p>{{ $post->address }}</p>    
             </div>
             <div class="Camera">
                 <h3>camera</h3>
