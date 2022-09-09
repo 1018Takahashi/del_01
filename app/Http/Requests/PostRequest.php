@@ -17,11 +17,6 @@ class PostRequest extends FormRequest
         return [
             'post.title' => 'required|string|max:100',
             'post.address' => 'required|string|max:4000',
-            'post.camera' => 'required|string|max:100',
-            'post.lens' => 'required|string|max:100',
-            'post.f' => 'required|string|max:100',
-            'post.ss' => 'required|string|max:100',
-            'post.iso' => 'required|string|max:100',
         ];
     }
 }

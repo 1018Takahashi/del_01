@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function(){
     
     Route::get('/places/{place}', 'PlaceController@index')->where('place', '[0-9]+');
     
+    Route::get('/months/{month}', 'MonthController@index')->where('month', '[0-9]+');
+    
     Route::get('/posts/{post}/edit', 'PostController@edit')->where('post', '[0-9]+');
     
     Route::put('/posts/{post}', 'PostController@update');

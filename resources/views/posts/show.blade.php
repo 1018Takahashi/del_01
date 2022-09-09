@@ -12,22 +12,29 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     
-    
     <body>
         <h1 class="user_name">
             <p>{{ $post->user->name }}</p>
         </h1>
+        
         <h1 class="title">
             <p>{{ $post->title }}</p>
         </h1>
+        
         <div class="text-center">
-            <img src="{{ $post->img }}" class="w-75">
+            <img src="{{ $post->img }}" width="700px" height="700px" style="object-fit: contain;">
         </div>
-        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+        
+        <h4 class='category'>
+        @foreach($post->category as $category)  
+        <a href="/categories/{{ $category->id }}">{{ $category->name }}</a>
+        @endforeach
+        </h4>
+        
         <div class="body">
             <div class="Address">
                 <h3>address</h3>
-                <a href="/places/{{ $post->place->name }}">{{ $post->place->name }}</a>
+                <a href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>
                 <p>{{ $post->address }}</p>    
             </div>
             <div class="Camera">
@@ -37,6 +44,10 @@
             <div class="Lens">
                 <h3>Lens</h3>
                 <p>{{ $post->lens }}</p>    
+            </div>
+            <div class="f_length">
+                <h3>FocalLength</h3>
+                <p>{{ $post->f_length }}</p>    
             </div>
             <div class="f">
                 <h3>F-Value</h3>
@@ -50,9 +61,17 @@
                 <h3>ISO Seneitivity</h3>
                 <p>{{ $post->iso }}</p>    
             </div>
-            <div class="iso">
-                <h3>Updated At</h3>
-                <p class = "updated_at">{{ $post->updated_at}}</p>  
+            <div class="access">
+                <h3>Access Count</h3>
+                <p>{{ $post->access }}</p>    
+            </div>
+            <div class="Month">
+                <h3>Month</h3>
+                <a href="/months/{{ $post->month->id }}">{{ $post->month->name }}</a>
+            </div>
+            <div class="filmed_at">
+                <h3>Filmed At</h3>
+                <p class = "created_at">{{ $post->filmed_at}}</p>  
             </div>
         </div>
         
@@ -79,7 +98,7 @@
         @endif
             
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/">HOME</a>
         </div>
     </body>
 </html>

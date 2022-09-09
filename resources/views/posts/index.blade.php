@@ -18,18 +18,9 @@
         <div class='card-columns'>
             @foreach ($posts as $post)
             <div class="card">
-                <div class="" alt="">
+                <a href="/posts/{{ $post->id }}" class="img">
                     <img src="{{ $post->img }}" class="card-img-top">
-                </div>
-                <div class='card-img-overlay'>
-                    <h2 class='card-title'>
-                        <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                    </h2>
-                    <div class="card-text">
-                        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                        <a href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>
-                    </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>
