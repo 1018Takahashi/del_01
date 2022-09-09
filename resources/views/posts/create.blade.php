@@ -20,13 +20,21 @@
                 <input type="file" name="image">
             </div>
             
+            <div class="comment">
+                <h2>Comment</h2>
+                <textarea name="post[comment]" placeholder="comment">{{ old('post.comment') }}</textarea>
+                <p class="title__error" style="color:red">{{ $errors->first('post.comment') }}</p>
+            </div>
+            
             <div class="category">
                 <h2>Category</h2>
-                <select name="post[category_id]">
-                    @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
+                @foreach($categories as $category)
+                <label>
+                    <input type="checkbox" value="{{ $category->id }}" name="categories_array[]">
+                        {{$category->name}}
+                    </input>
+                </label>
+                @endforeach
             </div>
             
             <div class="place">
@@ -42,36 +50,6 @@
                 <h2>Address</h2>
                 <textarea name="post[address]" placeholder="address">{{ old('post.address') }}</textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('post.address') }}</p>
-            </div>
-            
-            <div class="camera">
-                <h2>Camera</h2>
-                <input type="text" name="post[camera]" placeholder="camera" value="{{ old('post.camera') }}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.camera') }}</p>
-            </div>
-            
-            <div class="lens">
-                <h2>Lens</h2>
-                <input type="text" name="post[lens]" placeholder="lens" value="{{ old('post.lens') }}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.lens') }}</p>
-            </div>
-            
-            <div class="f">
-                <h2>F-Value</h2>
-                <input type="text" name="post[f]" placeholder="f-value" value="{{ old('post.f') }}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.f') }}</p>
-            </div>
-            
-            <div class="ss">
-                <h2>Shutter Speed</h2>
-                <input type="text" name="post[ss]" placeholder="shutter speed" value="{{ old('post.ss') }}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.ss') }}</p>
-            </div>
-            
-            <div class="iso">
-                <h2>ISO Sensitivity</h2>
-                <input type="text" name="post[iso]" placeholder="ISO sensitivity" value="{{ old('post.iso') }}"/>
-                <p class="title__error" style="color:red">{{ $errors->first('post.iso') }}</p>
             </div>
             
             <input type="submit" value="保存">

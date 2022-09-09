@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Place extends Model
+class Month extends Model
 {
     public function posts()   
     {
@@ -13,6 +13,6 @@ class Place extends Model
     
     public function getByPlace(int $limit_count = 10)
     {
-        return $this->posts()->with('place')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->posts()->with('month')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
