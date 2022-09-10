@@ -14,12 +14,13 @@
     <body>
         <h1 class="title">Edit Display</h1>
         
-        <div class="text-center">
-            <img src="{{ $post->img }}" class="w-75">
-        </div>
         
-        <div class="content">
-            <form action="/posts/{{ $post->id }}" method="POST">
+        
+        <div class="content" style="display: flex">
+            <div class="text-right" style="padding: 25px;">
+                <img src="{{ $post->img }}" width="500px" height="500px" style="object-fit: contain;">
+            </div>
+            <form action="/posts/{{ $post->id }}" method="POST" style="padding: 25px;">
                 @csrf
                 @method('PUT')
                 
@@ -33,8 +34,8 @@
                     <h2>Category</h2>
                     @foreach($categories as $category)
                     <label>
-                        <input type="checkbox" value="{{ $category->id }}" name="categories_array[]">
-                        {{$category->name}}
+                        <input type="checkbox" value="{{ $category->id }}" name="categories_array[]" {{ $post->category->contains($category) ? 'checked' : '' }}>
+                            {{$category->name}}
                         </input>
                     </label>
                     @endforeach
@@ -45,21 +46,23 @@
                     <textarea name="post[comment]" placeholder="comment">{{ $post->comment }}</textarea>
                 </div>
             　　
+            　　<div class="place">
+                    <h2>Place</h2>
+                    <select name="post[place_id]">
+                        @foreach($places as $place)
+                        <option value="{{ $place->id }}" @if ($place->id == $post->place->id) selected @endif>
+                            {{ $place->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                
                 <div class='content__address'>
                     <h2>Address</h2>
                     <textarea name="post[address]" placeholder="address">{{ $post->address }}</textarea>
                     <p class="title__error" style="color:red">{{ $errors->first('post.address') }}</p>
                 </div>
                 
-                <div class="place">
-                    <h2>Place</h2>
-                    <select name="post[place_id]">
-                        @foreach($places as $place)
-                        <option value="{{ $place->id }}">{{ $place->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            　　
                 <input type="submit" value="保存">
             </form>
         </div>

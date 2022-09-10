@@ -26,7 +26,6 @@ class Post extends Model
         "ss",
         "iso",
         'address',
-        'category_id',
         'place_id',
         'user_id',
         'month_id',
