@@ -46,28 +46,38 @@ class PostController extends Controller
     {
         //アップロードした画像ファイルを格納
         $img = $request->file('image');
-        //画像のEXIFデータを取得
-        $exif = exif_read_data($img);
         
-        //各データを$postへ代入
-        $post->camera = $exif['Model'];
-        $post->lens = $exif['UndefinedTag:0xA434'];
-        $f_length = (int) $exif['FocalLength'];
-        $post->f_length = (string) $f_length;
-        $f = (int) $exif['FNumber'];
-        $post->f = (string) $f;
-        $post->ss = $exif['ExposureTime'];
-        $post->iso = $exif['ISOSpeedRatings'];
+        try{
+            //画像のEXIFデータを取得
+            $exif = exif_read_data($img);
+            
+            //各データを$postへ代入
+            $post->camera = $exif['Model'];
         
-        //$exifの日付データを取得
-        $date = $exif['DateTimeOriginal'];
-        //月のみを数字として取得
-        $month_int = (int) mb_substr($date, 5, 2);
-        //文字列に変換
-        $month_str = (string) $month_int;
-        //各データを$postへ代入
-        $post->month_id = $month_str;
-        $post->filmed_at = $date;
+            $post->lens = $exif['UndefinedTag:0xA434'];
+        
+            $f_length = (int) $exif['FocalLength'];
+            $post->f_length = (string) $f_length;
+        
+            $f_int = explode("/", $exif['FNumber']);
+            $f = (double)$f_int[0] / (double)$f_int[1];
+            $post->f = (string) $f;
+        
+            $post->ss = $exif['ExposureTime'];
+        
+            $post->iso = $exif['ISOSpeedRatings'];
+        
+            //$exifの日付データを取得
+            $date = $exif['DateTimeOriginal'];
+            //月のみを数字として取得
+            $month_int = (int) mb_substr($date, 5, 2);
+            //文字列に変換
+            $month_str = (string) $month_int;
+            //各データを$postへ代入
+            $post->month_id = $month_str;
+            $post->filmed_at = $date;
+        } catch (\Exception $e) {
+        }
         
         //アップロードした画像をs3に保存
         $path = Storage::disk('s3')->putFile('deliverable-creation', $img, 'public');
@@ -82,7 +92,6 @@ class PostController extends Controller
         $post->category()->attach($input_categories);
         
         return redirect('/posts/' . $post->id);
-        
     }
     
     //投稿編集画面表示
@@ -90,8 +99,8 @@ class PostController extends Controller
     {
         return view('posts/edit')->with([
             'post' => $post,
-            'categories' => $category,
-            'places' => $place
+            'categories' => $category->get(),
+            'places' => $place->get(),
             ]);
     }
     
