@@ -14,7 +14,7 @@
     
     <body>
         <h1 class="user_name">
-            <p>{{ $post->user->name }}</p>
+            <a href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a>
         </h1>
         
         <h1 class="title">

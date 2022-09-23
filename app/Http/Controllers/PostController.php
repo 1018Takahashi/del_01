@@ -107,8 +107,11 @@ class PostController extends Controller
     //投稿データ編集の保存
     public function update(PostRequest $request, Post $post)
     {
-        $input_post = $request['post'];
-        $post->fill($input_post)->save();
+        $input_posts = $request['post'];
+        $input_categories = $request->categories_array;
+        
+        $post->fill($input_posts)->save();
+        $post->category()->sync($input_categories);
         
         return redirect('/posts/' . $post->id);
     }
@@ -116,8 +119,74 @@ class PostController extends Controller
     //投稿削除
     public function delete(Post $post)
     {
-        Storage::disk('s3')->delete($post->img);
-        $post->delete();
+        $img_path = $post->img;
+        $path = str_replace('https://photo-backet.s3.ap-northeast-1.amazonaws.com', '', $img_path);
+        Storage::disk('s3')->delete($path);
+        $post->category()->detach();
+        $post->delete($post->id);
+        
         return redirect('/');
     }
+    
+    public function searchIndex(Post $post){
+        return view('searches.index');
+    }
+    
+    //検索画面
+    public function search(Post $post, Request $request)
+    {
+        $search = $request->input('search');
+        $posts_paginate = $post->paginate(15);
+        $query = $post->query();
+        
+        if (isset($search)==True)
+        {
+            $spaceConversion = mb_convert_kana($search, 's');
+            $wordArraySearched = preg_split('/[\s]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            
+            foreach($wordArraySearched as $value){
+                $query->where('title', 'like', "%$value%")
+                      ->orWhere('comment', 'like', "%$value%")
+                      ->orWhere('address', 'like', "%$value%");
+            }
+            $posts_paginate = $query->paginate(15);
+            
+            
+            $posts_get = $post->get();
+            $posts_get = $query->get();
+            $all_number = count($posts_get);
+            
+            $month_number = [
+                [1, 0, 0, 6, "#00ffff"],
+                [2, 0, 0, 14, "#8000ff"],
+                [3, 0, 0, 22, "#ff00ff"],
+                [4, 0, 0, 30, "#ff0080"],
+                [5, 0, 0, 38, "#ff0000"],
+                [6, 0, 0, 46, "#00ff80"],
+                [7, 0, 0, 54, "#00ff00"],
+                [8, 0, 0, 62, "#80ff00"],
+                [9, 0, 0, 70, "#ffff00"],
+                [10, 0, 0, 78, "#ff8000"],
+                [11, 0, 0, 86, "#0080ff"],
+                [12, 0, 0, 94, "#0000ff"],
+                ];
+
+            foreach($posts_get as $post_get){
+                $month_id = $post_get->month_id;
+                $month_number[((int)$month_id)-1][1]++;
+                $month_number[((int)$month_id)-1][2] += 100/$all_number;
+            }
+            
+            
+            return view('searches.search')->with([
+            'posts' => $posts_paginate,
+            'search' => $search,
+            'months' => $month_number
+            ]);
+        } else {
+            return view('searches.index');
+        }
+    }
+    
+    
 }
