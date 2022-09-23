@@ -15,13 +15,11 @@
         <p class = "create">[<a href='/posts/create'>create</a>]</p>
         
         <!--投稿一覧-->
-        <div class='card-columns'>
+        <div class='photos'>
             @foreach ($posts as $post)
-            <div class="card">
-                <a href="/posts/{{ $post->id }}" class="img">
-                    <img src="{{ $post->img }}" class="card-img-top">
-                </a>
-            </div>
+            <a href="/posts/{{ $post->id }}">
+                <img src="{{ $post->img }}" class='photo'>
+            </a>
             @endforeach
         </div>
         

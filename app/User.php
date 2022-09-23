@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Database\Eloquent\Model;
+
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,5 +39,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function posts()   
+    {
+        return $this->hasMany('App\Post');  
+    }
+    
+    public function getByUser(int $limit_count = 15)
+    {
+        return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
-

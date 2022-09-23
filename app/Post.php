@@ -9,7 +9,7 @@ class Post extends Model
 {
     use SoftDeletes;
     
-    public function getPaginateByLimit(int $limit_count = 10)
+    public function getPaginateByLimit(int $limit_count = 15)
     {
         return $this::with('category', 'place')->orderBy('updated_at', 'DESC')->paginate($limit_count);
         

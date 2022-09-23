@@ -7,6 +7,84 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+
+
+.photos {
+  column-gap: 0px; 
+  column-count: 5; 
+  line-height: 0; 
+  width:100%;
+}
+
+.photo {
+  width:100%;
+  padding:1px; 
+  border-radius:5px;
+}
+
+
+/*----------------------------
+ bar graph
+----------------------------*/
+.bar-graph-wrap.vertical {
+  position: relative;
+  height: 150px;
+  margin: 0 auto;
+  max-width: 90%;
+  -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.bar-graph-wrap.vertical .graph {
+  width: 30px;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  border-radius: 4px 4px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  animation: graphAnim02 3.0s forwards;
+  flex-direction: column-reverse;
+}
+
+.bar-graph-wrap .graph .name {
+  font-size: 12px;
+  color: #ffffff;
+  align-items: flex-end;
+}
+
+.bar-graph-wrap .graph .number {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+
+.bar-graph-wrap .graph.blue {
+  top: auto;
+}
+
+@-webkit-keyframes graphAnim02 {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform:translateY(0);
+  }
+}
+
+
+
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -43,6 +121,10 @@
 *::after {
   box-sizing: border-box;
 }
+
+
+
+
 
 html {
   font-family: sans-serif;
