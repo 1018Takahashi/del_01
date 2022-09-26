@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,126 +14,138 @@ class CategoriesTableSeeder extends Seeder
         \DB::table('categories')->insert([
             [
                 'id' => '1',
-                'name' => 'landscape',
+                'name' => '風景',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '2',
-                'name' => 'animal',
+                'name' => '動物',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '3',
-                'name' => 'macro',
+                'name' => 'マクロ',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '4',
-                'name' => 'underwater',
+                'name' => '水中',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '5',
-                'name' => 'infrared-ray',
+                'name' => '赤外線',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '6',
-                'name' => 'astronomy',
+                'name' => '天体',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '7',
-                'name' => 'aviation',
+                'name' => '乗物',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '8',
-                'name' => 'science',
+                'name' => '科学',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '9',
-                'name' => 'portrait',
+                'name' => 'ポートレート',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '10',
-                'name' => 'bridal',
+                'name' => 'ブライダル',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '11',
-                'name' => 'documentary',
+                'name' => 'ドキュメンタリー',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '12',
-                'name' => 'sport',
+                'name' => 'スポーツ',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '13',
-                'name' => 'fashion',
+                'name' => 'ファッション',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '14',
-                'name' => 'commercial',
+                'name' => 'コマーシャル',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],[
                 'id' => '15',
-                'name' => 'street-snap',
+                'name' => 'ストリートスナップ',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '16',
-                'name' => 'event',
+                'name' => 'イベント',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '17',
-                'name' => 'trip',
+                'name' => '旅行',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '18',
-                'name' => 'urban-landscape',
+                'name' => '都市風景',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '19',
-                'name' => 'product',
+                'name' => '商品',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '20',
-                'name' => 'cooking',
+                'name' => '料理',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => '21',
-                'name' => 'architecture',
+                'name' => '建築',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'id' => '22',
+                'name' => '作品',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'id' => '23',
+                'name' => 'その他',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],

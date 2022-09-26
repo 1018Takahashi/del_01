@@ -30,7 +30,9 @@ class Post extends Model
         'user_id',
         'month_id',
         'access',
-        'filmed_at'
+        'filmed_at',
+        'lat',
+        'lng,'
         ];
         
     public function category()
