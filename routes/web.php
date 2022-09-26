@@ -25,12 +25,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/posts', 'PostController@store');
     
     //各カテゴリー画面
+    Route::get('/categories', 'CategoryController@home');
     Route::get('/categories/{category}', 'CategoryController@index')->where('category', '[0-9]+');
     
     //各都道府県の画面
+    Route::get('/places', 'PlaceController@index');
     Route::get('/places/{place}', 'PlaceController@index')->where('place', '[0-9]+');
     
     //各月の画面
+    Route::get('/months', 'MonthController@index');
     Route::get('/months/{month}', 'MonthController@index')->where('month', '[0-9]+');
     
     //各ユーザーの画面
@@ -55,3 +58,8 @@ Route::group(['middleware' => 'auth'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/login/google', 'GoogleLoginController@getGoogleAuth');
+
+Route::get('/login/google/callback', 'GoogleLoginController@handleGoogleCallback');

@@ -130,6 +130,11 @@
                 }
             </script>
         @endif
+        
+        <div id="map" style="height:500px">
+	   </div>
+	   <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=[AIzaSyDQZIaYYu_2zhHElV-wqLaD-20FpXvXsv4]&callback=initMap" async defer>
+	   </script>
             
         <div class="footer">
             <a href="/">HOME</a>
@@ -137,3 +142,5 @@
     </body>
 </html>
 @endsection
+
+
