@@ -151,42 +151,67 @@ class PostController extends Controller
             }
             $posts_paginate = $query->paginate(15);
             
-            
+            //検索ワードに引っかかる投稿を取得する
             $posts_get = $post->get();
             $posts_get = $query->get();
+            //検索ワードに引っかかる投稿の数を取得する
             $all_number = count($posts_get);
             
-            $month_number = [
-                [1, 0, 0, 6, "#00ffff"],
-                [2, 0, 0, 14, "#8000ff"],
-                [3, 0, 0, 22, "#ff00ff"],
-                [4, 0, 0, 30, "#ff0080"],
-                [5, 0, 0, 38, "#ff0000"],
-                [6, 0, 0, 46, "#00ff80"],
-                [7, 0, 0, 54, "#00ff00"],
-                [8, 0, 0, 62, "#80ff00"],
-                [9, 0, 0, 70, "#ffff00"],
-                [10, 0, 0, 78, "#ff8000"],
-                [11, 0, 0, 86, "#0080ff"],
-                [12, 0, 0, 94, "#0000ff"],
+            //月ごとの枚数をカウントするための配列
+            $month_count = [
+                [1, 0, 0, 4, "#00ffff"],
+                [2, 0, 0, 12, "#8000ff"],
+                [3, 0, 0, 20, "#ff00ff"],
+                [4, 0, 0, 28, "#ff0080"],
+                [5, 0, 0, 36, "#ff0000"],
+                [6, 0, 0, 44, "#00ff80"],
+                [7, 0, 0, 52, "#00ff00"],
+                [8, 0, 0, 60, "#80ff00"],
+                [9, 0, 0, 68, "#ffff00"],
+                [10, 0, 0, 76, "#ff8000"],
+                [11, 0, 0, 84, "#0080ff"],
+                [12, 0, 0, 92, "#0000ff"],
                 ];
-
-            foreach($posts_get as $post_get){
-                $month_id = $post_get->month_id;
-                $month_number[((int)$month_id)-1][1]++;
-                $month_number[((int)$month_id)-1][2] += 100/$all_number;
-            }
             
+            //焦点距離ごとの枚数をカウントするための配列
+            $f_count = [
+                ["広角(~35mm)", 0, 0, 8, "#00CC00"],
+                ["標準(~100mm)", 0, 0, 43, "#00AA00"],
+                ["望遠(100mm~)", 0, 0, 78, "#008800"],
+                ];
+            
+            //検索ワードに引っかかる全ての投稿をループさせる
+            foreach($posts_get as $post_get){
+                try{
+                    //月ごとの枚数をカウント
+                    $month_id = $post_get->month_id;
+                    $month_count[((int)$month_id)-1][1]++;
+                    $month_count[((int)$month_id)-1][2] += 100/$all_number;
+                    
+                    //焦点距離ごとの枚数をカウント
+                    $f_length = $post_get->f_length;
+                    if($f_length <= 35){
+                        $f_count[0][1]++;
+                        $f_count[0][2] += 100/$all_number;
+                    }elseif(35 < $f_length and $f_length <= 100){
+                        $f_count[1][1]++;
+                        $f_count[1][2] += 100/$all_number;
+                    }elseif(100 < $f_length){
+                        $f_count[2][1]++;
+                        $f_count[2][2] += 100/$all_number;
+                    }
+                }catch(\Exception $e){
+                }
+            }
             
             return view('searches.search')->with([
             'posts' => $posts_paginate,
             'search' => $search,
-            'months' => $month_number
+            'months' => $month_count,
+            'f_lengths' => $f_count,
             ]);
         } else {
             return view('searches.index');
         }
     }
-    
-    
 }

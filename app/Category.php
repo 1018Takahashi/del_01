@@ -11,8 +11,13 @@ class Category extends Model
         return $this->belongsToMany('App\Post');  
     }
     
-    public function getByCategory(int $limit_count = 15)
+    public function paginateByCategory(int $limit_count = 15)
     {
         return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function getByCategory()
+    {
+        return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->get();
     }
 }
