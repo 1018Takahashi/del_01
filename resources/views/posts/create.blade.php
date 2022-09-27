@@ -17,8 +17,20 @@
             
             <div class="img">
                 <h2>Photo</h2>
-                <input type="file" name="image">
+                <input type="file" onchange="previewImage(this);" name="image">
+                <p>preview;</p>
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
             </div>
+            <script>
+            function previewImage(obj)
+            {
+                var fileReader = new FileReader();
+                fileReader.onload = (function() {
+                    document.getElementById('preview').src = fileReader.result;
+                });
+                fileReader.readAsDataURL(obj.files[0]);
+            }
+            </script>
             
             <div class="comment">
                 <h2>Comment</h2>
@@ -35,6 +47,7 @@
                     </input>
                 </label>
                 @endforeach
+                <p class="title__error" style="color:red">{{ $errors->first('categories_array.0') }}</p>
             </div>
             
             <div class="place">
@@ -44,12 +57,16 @@
                     <option value="{{ $place->id }}">{{ $place->name }}</option>
                     @endforeach
                 </select>
+                <p class="title__error" style="color:red">{{ $errors->first('post.place_id') }}</p>
             </div>
             
             <div class="address">
                 <h2>Address</h2>
                 <textarea name="post[address]" placeholder="address">{{ old('post.address') }}</textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('post.address') }}</p>
+                
+                <p>画像ファイルからGPS情報を取得できる場合、グーグルマップで位置情報を表示しますか？</p>
+                
             </div>
             
             <input type="submit" value="保存">

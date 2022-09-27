@@ -109,6 +109,13 @@
             @endif
         </div>
         
+        <!--Google Map-->
+        @if (isset($post->lat) == True)
+            <iframe src="https://maps.google.co.jp/maps?output=embed&q={{  $post->lat }} , {{ $post->lng }}"></iframe>
+	    @endif
+	    
+            
+        
         @if ($user_id == $post->user_id)
             <div class="edit">
             <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
@@ -121,6 +128,7 @@
                     <button type = "button" onclick = "return deletePost(this)">delete</button> 
                 </form>
             </div>
+            
             <script>
                 function deletePost(e){
                     'use strict';
@@ -131,11 +139,6 @@
             </script>
         @endif
         
-        <div id="map" style="height:500px">
-	   </div>
-	   <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=[AIzaSyDQZIaYYu_2zhHElV-wqLaD-20FpXvXsv4]&callback=initMap" async defer>
-	   </script>
-            
         <div class="footer">
             <a href="/">HOME</a>
         </div>

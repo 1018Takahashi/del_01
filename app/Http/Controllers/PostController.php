@@ -49,6 +49,7 @@ class PostController extends Controller
         
         try{
             //画像のEXIFデータを取得
+            
             $exif = exif_read_data($img);
             
             //各データを$postへ代入
@@ -77,6 +78,31 @@ class PostController extends Controller
             $post->month_id = $month_str;
             $post->filmed_at = $date;
         } catch (\Exception $e) {
+        }
+        
+        try{
+            function convert_float($str)
+            {
+                $ary = explode('/', $str);
+                return ( isset($ary[1]) ) ? ($ary[0]/$ary[1]) : $ary ;
+            }
+            
+            function convert_decimal($ref, $fig_60)
+            {
+                $fig = convert_float( $fig_60[0] ) + ( convert_float($fig_60[1])/60 ) + ( convert_float($fig_60[2])/3600 ) ;
+                return ( $ref=='S' || $ref=='W' ) ? ( $fig * -1 ) : $fig ;
+            }
+            
+            $exif = exif_read_data($img);
+            $exif_lat_ref = $exif["GPSLatitudeRef"];
+            $exif_lat = $exif["GPSLatitude"];
+            $exif_lng_ref = $exif["GPSLongitudeRef"];
+            $exif_lng = $exif["GPSLongitude"];
+            
+            $post->lat = convert_decimal($exif_lat_ref, $exif_lat);
+            $post->lng = convert_decimal($exif_lng_ref, $exif_lng);
+            
+        }catch (\Exception $e) {
         }
         
         //アップロードした画像をs3に保存
