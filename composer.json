@@ -62,4 +62,9 @@
             "@php artisan key:generate --ansi"
         ]
     }
+    
+    
+    "require": {
+        "ext-exif":"*"
+    
 }
