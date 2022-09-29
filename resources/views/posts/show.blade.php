@@ -82,7 +82,7 @@
             
             @if (isset($post->iso) == True)
             <div class="iso">
-                <h3>ISO Seneitivity</h3>
+                <h3>ISO Sensitivity</h3>
                 <p>{{ $post->iso }}</p>    
             </div>
             @endif

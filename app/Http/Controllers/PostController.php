@@ -49,20 +49,23 @@ class PostController extends Controller
         
         try{
             //画像のEXIFデータを取得
-            
             $exif = exif_read_data($img);
+            
+            //文字列の分数を少数に変換
+            function str_double($exif_f){
+                $f_str = explode("/", $exif_f);
+                $f = (double)$f_str[0] / (double)$f_str[1];
+                return $f;
+            }
             
             //各データを$postへ代入
             $post->camera = $exif['Model'];
         
             $post->lens = $exif['UndefinedTag:0xA434'];
+            
+            $post->f_length = str_double($exif['FocalLength']);
         
-            $f_length = (int) $exif['FocalLength'];
-            $post->f_length = (string) $f_length;
-        
-            $f_int = explode("/", $exif['FNumber']);
-            $f = (double)$f_int[0] / (double)$f_int[1];
-            $post->f = (string) $f;
+            $post->f = str_double($exif['FNumber']);
         
             $post->ss = $exif['ExposureTime'];
         
@@ -77,6 +80,7 @@ class PostController extends Controller
             //各データを$postへ代入
             $post->month_id = $month_str;
             $post->filmed_at = $date;
+            
         } catch (\Exception $e) {
         }
         
