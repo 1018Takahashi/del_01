@@ -58,6 +58,7 @@ class PostController extends Controller
                 return $f;
             }
             
+            
             //各データを$postへ代入
             $post->camera = $exif['Model'];
         
