@@ -16,7 +16,10 @@ class PostController extends Controller
     //投稿一覧画面のpostデータ取得関数
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+        return view('posts/index')->with([
+            'posts' => $post->getPaginateByLimit(),
+            'rankings' => $post->accessRanking(),
+            ]);
     }
     
     //投稿詳細画面のpostデータ取得
