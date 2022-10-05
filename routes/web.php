@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/categories/{category}', 'CategoryController@index')->where('category', '[0-9]+');
     
     //各都道府県の画面
-    Route::get('/places', 'PlaceController@index');
+    Route::get('/places', 'PlaceController@home');
     Route::get('/places/{place}', 'PlaceController@index')->where('place', '[0-9]+');
     
     //各月の画面

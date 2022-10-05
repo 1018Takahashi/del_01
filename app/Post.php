@@ -15,6 +15,11 @@ class Post extends Model
         
     }
     
+    public function accessRanking(int $count=3)
+    {
+        return $this::with('category', 'place')->orderBy('access', 'desc')->limit(3)->get();
+    }
+    
     protected $fillable = [
         'title',
         'img',
