@@ -1,121 +1,9 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<!DOCTYPE HTML>
-<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
-    </head>
-    
-    <body>
-        <h1 class="user_name">
-            <a href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a>
-        </h1>
-        
-        <h1 class="title">
-            <p>{{ $post->title }}</p>
-        </h1>
-        
-        <div class="text-center">
-            <img src="{{ $post->img }}" width="700px" height="700px" style="object-fit: contain;">
-        </div>
-        
-        <h4 class='category'>
-        @foreach($post->category as $category)  
-        <a href="/categories/{{ $category->id }}">{{ $category->name }}</a>
-        @endforeach
-        </h4>
-        
-        <div class="body">
-            @if (isset($post->comment) == True)
-            <div class="Comment">
-                <h3>comment</h3>
-                <p>{{ $post->comment }}</p>    
-            </div>
-            @endif
-            
-            <div class="Address">
-                <h3>address</h3>
-                <a href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>
-                <p>{{ $post->address }}</p>    
-            </div>
-            
-            @if (isset($post->camera) == True)
-            <div class="Camera">
-                <h3>camera</h3>
-                <p>{{ $post->camera }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->lens) == True)
-            <div class="Lens">
-                <h3>Lens</h3>
-                <p>{{ $post->lens }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->f_length) == True)
-            <div class="f_length">
-                <h3>FocalLength</h3>
-                <p>{{ $post->f_length }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->f) == True)
-            <div class="f">
-                <h3>F-Value</h3>
-                <p>{{ $post->f }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->ss) == True)
-            <div class="ss">
-                <h3>Shutter Speed</h3>
-                <p>{{ $post->ss }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->iso) == True)
-            <div class="iso">
-                <h3>ISO Sensitivity</h3>
-                <p>{{ $post->iso }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->access) == True)
-            <div class="access">
-                <h3>Access Count</h3>
-                <p>{{ $post->access }}</p>    
-            </div>
-            @endif
-            
-            @if (isset($post->month->id) == True)
-            <div class="Month">
-                <h3>Month</h3>
-                <a href="/months/{{ $post->month->id }}">{{ $post->month->name }}</a>
-            </div>
-            @endif
-            
-            @if (isset($post->filmed_at) == True)
-            <div class="filmed_at">
-                <h3>Filmed At</h3>
-                <p>{{ $post->filmed_at}}</p>  
-            </div>
-            @endif
-        </div>
-        
-        <!--Google Map-->
-        @if (isset($post->lat) == True)
-            <iframe src="https://maps.google.co.jp/maps?output=embed&q={{  $post->lat }} , {{ $post->lng }}"></iframe>
-	    @endif
-	    
-            
-        
+<body class="bg-secondary bg-opacity-25">
+    <div class="bg-dark">
+        <div style="height:3%;"></div>
         @if ($user_id == $post->user_id)
             <div class="edit">
             <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
@@ -138,12 +26,111 @@
                 }
             </script>
         @endif
+        <h1 class="text-light title" style="position:relative; left:5%;">{{ $post->title }}:</h1>
+        <div class="show-body">
+            <div class="show-left">
+                <div id="user_name" class="show-detail">
+                    <p>ユーザー:</p>
+                    <a class="text-light" href="/users/{{ $post->user->id }}"><h4>{{ $post->user->name }}</h4></a>
+                </div>
+                <div id="category" class="show-detail">
+                    <p>ジャンル:</p>
+                    @foreach($post->category as $category)  
+                    <p><a class="text-light" href="/categories/{{ $category->id }}">{{ $category->name }}</a></p>
+                    @endforeach
+                </div>
+                <div id="Address" class="show-detail">
+                    <p>撮影場所</p>
+                    <p><a class="text-light" href="/places/{{ $post->place->id }}">{{ $post->place->name }}</a>{{ $post->address }}</p>
+                </div>
+                <div id="Camera" class="show-detail">
+                    <p>モデル:</p>
+                    @if (isset($post->camera) == True)
+                    <p>{{ $post->camera }}</p>
+                    @else
+                    <br>
+                    @endif
+                </div>
+                <div id="Lens" class="show-detail">
+                    <p>レンズ:</p>
+                    @if (isset($post->lens) == True)
+                    <p>{{ $post->lens }}</p>
+                    @else
+                    <br>
+                    @endif
+                </div>
+            </div>
+            
+            <div class="show-center">
+                <img src="{{ $post->img }}">
+            </div>
+            
+            <div class="show-right">
+                
+                <div id="f_length" class="show-detail" height="20%">
+                    <p>焦点距離:</p>
+                    @if (isset($post->f_length) == True)
+                    <p>{{ $post->f_length }}</p>
+                    @else
+                    <br>
+                    @endif
+                </div>
+                <div id="f" class="show-detail" height="10%">
+                    <p>F値：</p>
+                    @if (isset($post->f) == True)
+                    <p>{{ $post->f }}</p>
+                    @else
+                    <br>
+                    @endif
+                </div>
+                <div id="ss" class="show-detail" height="10%">
+                    <p>シャッタースピード[s]:</p>
+                    @if (isset($post->ss) == True)
+                    <p>{{ $post->ss }}</p>
+                    @else
+                    <br>
+                    @endif
+                </div>
+                <div id="iso" class="show-detail" height="10%">
+                    <p>ISO感度:</p>
+                    @if (isset($post->iso) == True)
+                    <p>{{ $post->iso }}</p>
+                    @else
+                    <br>
+                    @endif
+                </div>
+                <div id="filmed_at" class="show-detail" height="10%">
+                    <p>撮影日:</p>
+                    @if (isset($post->filmed_at) == True)
+                    <p>{{ $post->filmed_at}}</p>  
+                    @else
+                    <br>
+                    @endif
+                </div>
+            </div>
+        </div>
         
+        <div class="comment-map">
+            <div class="Comment">
+                <p>comment:</p>
+                @if (isset($post->comment) == True)
+                <p>{{ $post->comment }}</p>
+                @else
+                <br>
+                @endif
+            </div>
+            <div class="map" style="">
+                @if (isset($post->lat) == True)
+                <iframe src="https://maps.google.co.jp/maps?output=embed&q={{  $post->lat }} , {{ $post->lng }}"></iframe>
+                @endif
+            </div>
+        </div>
+       
         <div class="footer">
             <a href="/">HOME</a>
         </div>
-    </body>
-</html>
+    </div>
+</body>
 @endsection
 
 
