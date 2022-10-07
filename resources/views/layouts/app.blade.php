@@ -38,13 +38,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        
-                    </ul>
-                    
-                    <ul class="navbar-nav">
                         @guest
                         @else
-                        <li class="nav-item">
+                        <li class="nav-item" style="margin-left: 100%">
+                            <a class="nav-link text-warning" href="/posts/create">create</a>
+                        </li>
+                        <li class="nav-item" style="margin-left: 15%">
                             <a class="nav-link text-light" href="/categories">category</a>
                         </li>
                         <li class="nav-item" style="margin-left: 15%">
@@ -54,6 +53,10 @@
                             <a class="nav-link text-light" href="/months">month</a>
                         </li>
                         @endguest
+                    </ul>
+                    
+                    <ul class="navbar-nav">
+                        
                     </ul>
                     
                     <!-- Right Side Of Navbar -->

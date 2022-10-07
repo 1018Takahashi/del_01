@@ -18,6 +18,6 @@ class Category extends Model
     
     public function getByCategory()
     {
-        return $this->posts()->with('category')->orderBy('updated_at', 'DESC')->get();
+        return $this->posts()->with('category')->get();
     }
 }
