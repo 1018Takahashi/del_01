@@ -23,15 +23,11 @@
                     </div>
                 </div>
             </form>
-        
-            <a href="/searches">検索画面</a>
-        
-            <!--投稿作成-->
-            <p class = "create">[<a href='/posts/create'>create</a>]</p>
-        
-            <div class="row w-100">
+            
+            
                 
                 <!--投稿一覧-->
+            <div class="row w-100">
                 <div class='photos col-md-10'>
                     <div style="position:relative; left:8%;">
                         @foreach ($posts as $post)
@@ -44,7 +40,6 @@
                 
                 <div class="col-md-2">
                     <div class='rankings bg-white w-100'>
-                        
                         <h3 class="ranking-name"><i class="fas fa-chess-king" style="color: #FFD700;"></i></h3>
                         <a href="/posts/{{ $rankings[0]->id }}">
                             <img src="{{ $rankings[0]->img }}" class="ranking">
@@ -59,10 +54,8 @@
                         <a href="/posts/{{ $rankings[2]->id }}">
                             <img src="{{ $rankings[2]->img }}" class="ranking">
                         </a>
-                        
                     </div>
                 </div>
-                
             </div>
                 
             <!--ページネーション-->

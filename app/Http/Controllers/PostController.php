@@ -38,9 +38,11 @@ class PostController extends Controller
     //投稿作成画面のcategories,placesデータ取得
     public function create(Category $category, Place $place)
     {
+        $n = 0;
         return view('posts/create')->with([
             'categories' => $category->get(),
             'places' => $place->get(),
+            'n' => $n,
             ]);
     }
     
