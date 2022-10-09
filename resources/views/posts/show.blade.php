@@ -3,17 +3,19 @@
 @section('content')
 <body class="bg-secondary bg-opacity-25">
     <div class="bg-dark">
-        <div style="height:3%;"></div>
-        @if ($user_id == $post->user_id)
-            <div class="edit">
-            <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+        <div class="w-100" style="height:3%;"></div>
+        
+        <div class="d-flex w-100" style="margin-bottom:1%;">
+            @if ($user_id == $post->user_id)
+            <div class="edit" style="position:relative; left: 8%;;">
+                <button class="btn btn-outline-success" onclick="location.href='/posts/{{ $post->id }}/edit'">edit</button>
             </div>
         
-            <div class="delete">
+            <div class="delete" style="position:relative; left:11.5%;">
                 <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
                     @csrf
                     @method('DELETE')
-                    <button type = "button" onclick = "return deletePost(this)">delete</button> 
+                    <button class="btn btn-outline-danger" type = "button" onclick = "return deletePost(this)">delete</button> 
                 </form>
             </div>
             
@@ -25,8 +27,11 @@
                     }
                 }
             </script>
-        @endif
-        <h1 class="text-light title" style="position:relative; left:5%;">{{ $post->title }}:</h1>
+            @endif
+        </div>
+        
+        <h1 class="text-light title" style="position:relative; left:12%;">{{ $post->title }}</h1>
+        
         <div class="show-body">
             <div class="show-left">
                 <div id="user_name" class="show-detail">
@@ -120,15 +125,13 @@
                 @endif
             </div>
             <div class="map" style="">
+                <p>位置情報</p>
                 @if (isset($post->lat) == True)
                 <iframe src="https://maps.google.co.jp/maps?output=embed&q={{  $post->lat }} , {{ $post->lng }}"></iframe>
                 @endif
             </div>
         </div>
-       
-        <div class="footer">
-            <a href="/">HOME</a>
-        </div>
+        <div style="height:3%;"></div>
     </div>
 </body>
 @endsection
