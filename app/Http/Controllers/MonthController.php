@@ -9,6 +9,11 @@ class MonthController extends Controller
 {
     public function index(Month $month)
     {
-        return view('months.index')->with(['posts' => $month->getByPlace()]);
+        return view('months.index')->with(['posts' => $month->paginateByMonth()]);
+    }
+    
+    public function home(Month $month)
+    {
+        return view('months.home')->with(['months' => $month->get()]);
     }
 }

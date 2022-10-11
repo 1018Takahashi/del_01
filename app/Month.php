@@ -11,7 +11,7 @@ class Month extends Model
         return $this->hasMany('App\Post');  
     }
     
-    public function getByPlace(int $limit_count = 15)
+    public function paginateByMonth(int $limit_count = 15)
     {
         return $this->posts()->with('month')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }

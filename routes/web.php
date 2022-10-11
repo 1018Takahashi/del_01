@@ -16,6 +16,9 @@ Route::group(['middleware' => 'auth'], function(){
     //ホーム画面
     Route::get('/', 'PostController@index');
     
+    //test画面
+    Route::get('/test', 'PostController@test');
+    
     //投稿詳細画面
     Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
     
@@ -33,7 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/places/{place}', 'PlaceController@index')->where('place', '[0-9]+');
     
     //各月の画面
-    Route::get('/months', 'MonthController@index');
+    Route::get('/months', 'MonthController@home');
     Route::get('/months/{month}', 'MonthController@index')->where('month', '[0-9]+');
     
     //各ユーザーの画面

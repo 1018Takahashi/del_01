@@ -14,6 +14,9 @@
             
             <div style="height: 5%;"></div>
             
+            <!--test-->
+            <a href="/test">test</a>
+            
             <!--検索-->
             <form method="GET" action="/searches/search">
                 <div>

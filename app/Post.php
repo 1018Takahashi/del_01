@@ -11,13 +11,13 @@ class Post extends Model
     
     public function getPaginateByLimit(int $limit_count = 15)
     {
-        return $this::with('category', 'place')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category', 'place', 'month')->orderBy('updated_at', 'DESC')->paginate($limit_count);
         
     }
     
     public function accessRanking(int $count=3)
     {
-        return $this::with('category', 'place')->orderByRaw('CAST(access as SIGNED) DESC')->limit(3)->get();
+        return $this::with('category', 'place', 'month')->orderByRaw('CAST(access as SIGNED) DESC')->limit(3)->get();
     }
     
     protected $fillable = [
