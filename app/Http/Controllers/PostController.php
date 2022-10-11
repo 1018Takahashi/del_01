@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     //投稿一覧画面のpostデータ取得関数
+    public function test(Post $post)
+    {
+        return view('posts/test');
+    }
+    
+    //投稿一覧画面のpostデータ取得関数
     public function index(Post $post)
     {
         return view('posts/index')->with([

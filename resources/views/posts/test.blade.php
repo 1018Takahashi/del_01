@@ -1,9 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="bg-secondary bg-opacity-25" style="position:relative; height:100%">
-    <div>
-        <div class="container">
+
+
+<body>
+    <div class="body">
+        <div class="diafragma">
+        　　<div class="hoja"></div>
+        　　<div class="hoja giro"></div>
+        　　<div class="text">user name</div>
+        　　<div class="start">START<br>Photo Table</div>
+　　　  </div>
+　  </div>
+　　<div>
+　　　  <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7">
                     <div class="card">
@@ -79,6 +89,10 @@
                 </div>
             </div>
         </div>
-    </div>
+　　</div>
+　　    
 </body>
+
+
+
 @endsection

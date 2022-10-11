@@ -12,7 +12,17 @@
     <body class="bg-secondary bg-opacity-25">
         <div class="bg-dark">
             
-            <div style="height: 0.5%;"></div>
+            <div style="height: 5%;"></div>
+            
+            <!--検索-->
+            <form method="GET" action="/searches/search">
+                <div>
+                    <div class="search_bar">
+                        <input id="search_text" class="" type="search" placeholder="キーワードを入力" name="search" value="{{ $category->name }}">
+                        <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i> 検索</button>
+                    </div>
+                </div>
+            </form>
         
             <div class="bar-graph-content m-5">
                 <h2 class="graph-title text-center text-light m-2">月ごとの枚数グラフ</h2>

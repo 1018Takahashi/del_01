@@ -14,7 +14,6 @@ class CategoryController extends Controller
     
     public function index(Category $category)
     {
-        
         $categories_get = $category->getByCategory();
         $all_number = count($categories_get);
         
@@ -64,6 +63,7 @@ class CategoryController extends Controller
         }
         
         return view('categories.index')->with([
+            'category' => $category,
             'posts' => $category->paginateByCategory(),
             'months' => $month_count,
             'f_lengths' => $f_count,
