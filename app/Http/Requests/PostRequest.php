@@ -18,7 +18,6 @@ class PostRequest extends FormRequest
             'post.title' => 'required|string|max:100',
             'post.address' => 'required|string|max:500',
             'categories_array.0' => 'required',
-            'image' => 'required',
         ];
     }
 }

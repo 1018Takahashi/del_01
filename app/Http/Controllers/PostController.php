@@ -24,6 +24,7 @@ class PostController extends Controller
     {
         return view('posts/index')->with([
             'posts' => $post->getPaginateByLimit(),
+            'rankings' => $post->accessRanking(),
             ]);
     }
     

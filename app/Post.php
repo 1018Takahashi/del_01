@@ -15,6 +15,11 @@ class Post extends Model
         
     }
     
+    public function accessRanking(int $count=3)
+    {
+        return $this::with('category', 'place', 'month')->orderByRaw('CAST(access AS SIGNED) DESC')->limit($count)->get();
+    }
+    
     protected $fillable = [
         'title',
         'img',

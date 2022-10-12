@@ -34,6 +34,26 @@
                     </div>
                 </div>
                 
+                <div class="col-md-2">
+                    <div class='rankings bg-white w-100'>
+                        <h3 class="ranking-name"><i class="fas fa-chess-king" style="color: #FFD700;"></i></h3>
+                        <a href="/posts/{{ $rankings[0]->id }}">
+                            <img src="{{ $rankings[0]->img }}" class="ranking">
+                        </a>
+                        
+                        <h3 class="ranking-name"><i class="fas fa-chess-king" style="color: silver;"></i></h3>
+                        <a href="/posts/{{ $rankings[1]->id }}">
+                            <img src="{{ $rankings[1]->img }}" class="ranking">
+                        </a>
+                        
+                        <h3 class="ranking-name"><i class="fas fa-chess-king" style="color: #8B4513;"></i></h3>
+                        <a href="/posts/{{ $rankings[2]->id }}">
+                            <img src="{{ $rankings[2]->img }}" class="ranking">
+                        </a>
+                    </div>
+                </div>
+            </div>
+                
             <!--ページネーション-->
             <div class='paginate'>
                 {{ $posts->links() }}
