@@ -2,6 +2,7 @@
 
 @section('content')
     <body class="bg-secondary bg-opacity-25">
+        
         <div class="bg-dark">
             
             <div style="height: 5%;"></div>
