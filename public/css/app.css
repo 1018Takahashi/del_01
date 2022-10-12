@@ -472,7 +472,7 @@
 #jp_map li.miyazaki a { top:79%; left:15%; }
 #jp_map li.kagoshima a { top:79%; left:8%; }
 #jp_map li.okinawa a { top:85%; left:0%; }
-#jp_map li.else a { top:25%; left:15%; }
+#jp_map li.else a { top:20%; left:55%; }
 @media screen and (max-width:782px) {
 #jp_map { margin: 16px 0 0; }
 #jp_map::before { padding:100% 0 0; }
