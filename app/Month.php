@@ -15,4 +15,9 @@ class Month extends Model
     {
         return $this->posts()->with('month')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function getByMonth(int $limit_count = 15)
+    {
+        return $this->posts()->with('month')->get();
+    }
 }

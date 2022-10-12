@@ -45,8 +45,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');  
     }
     
-    public function getByUser(int $limit_count = 15)
+    public function paginateByUser(int $limit_count = 15)
     {
         return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function getByUser()
+    {
+        return $this->posts()->with('user')->get();
     }
 }
