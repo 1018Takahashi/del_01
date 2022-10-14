@@ -12,16 +12,15 @@
             
             <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}">
             
-            <div class="row">
+            <div class="row" style="position:relative; height:110%">
                 
                 <div class="col-md-1"></div>
                 
-                <div class="col-md-5">
+                <div class="col-md-5 h-100">
                     <div class="img">
                         <h2 class="text-light" style="text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);">Image</h2>
                         <input class="text-light" type="file" onchange="previewImage(this);" name="image">
                         <p　class="text-light" style="text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);">preview:</p>
-                        <br>
                         @if(mb_strlen($errors->first('image')) >> 1)
                         <p class="title__error" style="color:red">画像をアップロードしてください</p>
                         @endif
