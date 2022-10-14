@@ -9,9 +9,9 @@
             @foreach ($months as $month)
             <div class="col-md-3">
                 <a href="/months/{{ $month->id }}">
-                    <div class="c-body">
+                    <div class="m-body">
                         <img src="/image/month/{{ $month->name }}.jpeg"/>
-                        <h2>{{ $month->name }}</h2>
+                        <h1>{{ $month->name }}</h1>
                     </div>
                 </a>
                 <div style="position:relative; width:100%; height:10%; padding:10%"></div>
