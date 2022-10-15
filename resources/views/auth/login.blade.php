@@ -69,8 +69,11 @@
                             </form>
                             <div class="form-group row mt-2">
                                 <div class="col-md-8 offset-md-4">
-                                    <a href="/login/google" class="btn btn-secondary d-flex" role="button" style="height:75%; width:28%;">
-                                        <p class="text-primary">Goo</p><p class="text-danger">gle&nbsp;</p><p class="text-warning">Log</p><p class="text-success">in</p>
+                                    <a href="/login/google" class="btn btn-secondary" role="button" style="height:75%;">
+                                        <div class="d-flex">
+                                            <p class="text-primary">Goo</p><p class="text-danger">gle&nbsp;</p><p class="text-warning">Log</p><p class="text-success">in</p>
+                                        </div>
+                                        
                                     </a>
                                 </div>
                             </div>
