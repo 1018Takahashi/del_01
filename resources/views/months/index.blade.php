@@ -5,7 +5,7 @@
         
         <div class="bg-dark">
             
-            <h1 class="text-light" style="padding:2% 0 0 2%">{{ $month->name }}</h1>
+            <h1 class="text-light" style="padding:2% 0 0 2%; text-shadow: 2px 2px 2px #808080;">{{ $month->name }}</h1>
             
             <!--検索-->
             <form method="GET" action="/searches/search">

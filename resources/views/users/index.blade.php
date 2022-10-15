@@ -3,7 +3,7 @@
 @section('content')
     <body class="bg-secondary bg-opacity-25">
         <div class="bg-dark">
-            <h1 class="text-light" style="padding:2% 0 0 2%">{{ $user->name }}</h1>
+            <h1 class="text-light" style="padding:2% 0 0 2%; text-shadow: 2px 2px 2px #808080;">{{ $user->name }}</h1>
         
             <div class="bar-graph-content m-5">
                 <h2 class="graph-title text-center text-light m-2">月ごとの枚数グラフ</h2>
