@@ -5,6 +5,7 @@
     <body class="bg-secondary bg-opacity-25">
         <div class="bg-dark">
             
+            <!--title-->
             <h1 class="text-light"  style="padding:2% 0 0 2%; text-shadow: 2px 2px 2px #808080;">{{ $category->name }}</h1>
             
             <!--検索-->
