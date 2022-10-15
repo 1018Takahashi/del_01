@@ -1,19 +1,16 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
     <body class="bg-secondary bg-opacity-25">
         <div class="bg-dark">
-            <h1 class="text-light">{{ $place->name }}</h1>
-            <!--投稿作成-->
-            <p class = "create">[<a href='/posts/create'>create</a>]</p>
+            <h1 class="text-light"  style="padding:2% 0 0 2%">{{ $place->name }}</h1>
+            
+            <form method="GET" action="/searches/search">
+                <div class="search_bar">
+                    <input id="search_text" class="" type="search" placeholder="キーワードを入力" name="search" value="@if(isset($search)) {{ $search }} @endif">
+                    <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
             
             <div class="bar-graph-content m-5">
                 <h2 class="graph-title text-center text-light m-2">月ごとの枚数グラフ</h2>

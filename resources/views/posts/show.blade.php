@@ -30,19 +30,21 @@
             @endif
         </div>
         
-        <h1 class="text-light title" style="position:relative; left:12%;">{{ $post->title }}</h1>
+        <h1 class="text-light title" style="position:relative; left:6%;">{{ $post->title }}</h1>
         
-        <div class="show-body">
-            <div class="show-left">
+        <div class="show-body row">
+            <div class="show-text col-md-2">
                 <div id="user_name" class="show-detail">
                     <p>ユーザー:</p>
                     <a class="text-light" href="/users/{{ $post->user->id }}"><h4>{{ $post->user->name }}</h4></a>
                 </div>
                 <div id="category" class="show-detail">
                     <p>ジャンル:</p>
-                    @foreach($post->category as $category)  
-                    <p><a class="text-light" href="/categories/{{ $category->id }}">{{ $category->name }}</a></p>
-                    @endforeach
+                    <p>
+                        @foreach($post->category as $category)  
+                        <a class="text-light" href="/categories/{{ $category->id }}">{{ $category->name }}</a><br>
+                        @endforeach
+                    </p>
                 </div>
                 <div id="Address" class="show-detail">
                     <p>撮影場所</p>
@@ -66,11 +68,11 @@
                 </div>
             </div>
             
-            <div class="show-center">
+            <div class="show-center col-md-8">
                 <img src="{{ $post->img }}">
             </div>
             
-            <div class="show-right">
+            <div class="show-text col-md-2">
                 
                 <div id="f_length" class="show-detail" height="20%">
                     <p>焦点距離:</p>
@@ -115,8 +117,9 @@
             </div>
         </div>
         
-        <div class="comment-map">
-            <div class="Comment">
+        <div class="comment-map row">
+            <div class="col-md-2"></div>
+            <div class="Comment col-md-4">
                 <p>comment:</p>
                 @if (isset($post->comment) == True)
                 <p>{{ $post->comment }}</p>
@@ -124,12 +127,13 @@
                 <br>
                 @endif
             </div>
-            <div class="map" style="">
+            <div class="map col-md-4">
                 <p>位置情報</p>
                 @if (isset($post->lat) == True)
                 <iframe src="https://maps.google.co.jp/maps?output=embed&q={{  $post->lat }} , {{ $post->lng }}"></iframe>
                 @endif
             </div>
+            <div class="col-md-2"></div>
         </div>
         <div style="height:3%;"></div>
     </div>

@@ -16,9 +16,6 @@ Route::group(['middleware' => 'auth'], function(){
     //ホーム画面
     Route::get('/', 'PostController@index');
     
-    //test画面
-    Route::get('/test', 'PostController@test');
-    
     //投稿詳細画面
     Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
     

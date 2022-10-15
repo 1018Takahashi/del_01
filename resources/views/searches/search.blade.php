@@ -17,7 +17,7 @@
             <form method="GET" action="/searches/search">
                 <div class="search_bar">
                     <input id="search_text" class="" type="search" placeholder="キーワードを入力" name="search" value="@if(isset($search)) {{ $search }} @endif">
-                    <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i> 検索</button>
+                    <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
         

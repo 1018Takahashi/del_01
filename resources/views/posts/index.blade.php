@@ -12,7 +12,7 @@
                 <div>
                     <div class="search_bar">
                         <input id="search_text" class="" type="search" placeholder="キーワードを入力" name="search">
-                        <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i> 検索</button>
+                        <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>

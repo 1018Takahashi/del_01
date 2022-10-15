@@ -5,14 +5,14 @@
         
         <div class="bg-dark">
             
-            <div style="height: 5%;"></div>
+            <h1 class="text-light" style="padding:2% 0 0 2%">{{ $month->name }}</h1>
             
             <!--検索-->
             <form method="GET" action="/searches/search">
                 <div>
                     <div class="search_bar">
-                        <input id="search_text" class="" type="search" placeholder="キーワードを入力" name="search" value="{{ $month->name }}">
-                        <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i> 検索</button>
+                        <input id="search_text" class="" type="search" placeholder="キーワードを入力" name="search">
+                        <button class="btn btn-primary search_btn" type="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
@@ -36,10 +36,6 @@
                     <img src="{{ $post->img }}" class='photo'>
                 </a>
                 @endforeach
-            </div>
-        
-            <div class="footer">
-                <a href="/categories">BACK</a>
             </div>
         
             <!--ページネーション-->

@@ -38,10 +38,6 @@
                 @endforeach
             </div>
         
-            <div class="footer">
-                <a href="/categories">BACK</a>
-            </div>
-        
             <!--ページネーション-->
             <div class='paginate'>
                 {{ $posts->links() }}

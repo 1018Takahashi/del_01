@@ -48,7 +48,6 @@
 
 .search_btn {
   height: 100%;
-  width: 11%;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
 }
 
@@ -102,10 +101,7 @@
   left: 5%;
 }
 
-.show-body .show-left {
-  position: relative;
-  width: 20%;
-  height: 95%;
+.show-body .show-text {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
@@ -113,32 +109,18 @@
 }
 
 .show-body .show-center {
-  position: relative;
-  left: 0.5%;
-  width: 60%;
   height: 100%;
-  background-color: #222222;
-  text-align: center;
+  width: 100%;
 }
 
 .show-body .show-center img {
   object-fit: contain;
   width: 100%;
   height: 100%;
+  background-color: #222222;
 }
 
-.show-body .show-right {
-  position: relative;
-  left: 0.5%;
-  width: 20%;
-  height: 95%;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  text-align: center;
-}
-
-.show-body .show-left .show-detail, .show-body .show-right .show-detail {
+.show-body .show-text .show-detail{
   position: relative;
   left: 5%;
   color: white;
@@ -151,17 +133,11 @@
 }
 
 .comment-map {
-  position: relative;
-  display: flex;
-  width: 70%;
-  left: 15%;
   margin-top: 1.5%;
 }
 
 .comment-map .comment {
-  position: relative;
-  left: 5%;
-  width: 45%;
+  margin-right: 2.5%;
   color: white;
   text-align: center;
   background-color: #343a40;
@@ -171,9 +147,6 @@
 }
 
 .comment-map .map {
-  position: relative;
-  left: 10%;
-  width: 40%;
   padding-bottom: 2.5%;
   color: white;
   text-align: center;
