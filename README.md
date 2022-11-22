@@ -41,3 +41,4 @@ Photo-Table is a web application for photography for a wide range of photography
 
 <p>This allows you to view graphs from the details and groups of posted photos. Because you can't see the full picture of the detailed information just by listing the photos, this application make it easier to understand by displaying graphs.</p>
 
+<p align="center"><img src="https://user-images.githubusercontent.com/108485443/203191935-ac69c873-fd2e-4546-972f-d9592d3dad3d.png"></p>
